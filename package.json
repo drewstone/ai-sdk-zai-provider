@@ -1,5 +1,5 @@
 {
-  "name": "ai-sdk-zai-cc-provider",
+  "name": "ai-sdk-zai-provider",
   "version": "0.1.0",
   "description": "Drop-in Z.AI/GLM provider for the Vercel AI SDK powered by ai-sdk-provider-claude-code with automatic env + MCP wiring.",
   "type": "module",
@@ -35,13 +35,13 @@
     "provider"
   ],
   "author": "Z.AI Engineering <support@z.ai>",
-  "homepage": "https://github.com/zai-dev/ai-sdk-zai-cc-provider#readme",
+  "homepage": "https://github.com/zai-dev/ai-sdk-zai-provider#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zai-dev/ai-sdk-zai-cc-provider.git"
+    "url": "https://github.com/zai-dev/ai-sdk-zai-provider.git"
   },
   "bugs": {
-    "url": "https://github.com/zai-dev/ai-sdk-zai-cc-provider/issues"
+    "url": "https://github.com/zai-dev/ai-sdk-zai-provider/issues"
   },
   "license": "MIT",
   "engines": {
