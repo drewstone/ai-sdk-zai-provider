@@ -1,0 +1,20 @@
+node_modules
+dist
+coverage
+.env
+.env.*
+logs/
+.npmrc
+.pnpm-debug.log
+.DS_Store
+*.log
+npm-debug.log*
+pnpm-debug.log*
+package-lock.json
+
+# Vitest coverage artifacts
+.vitest
+
+# macOS
+.AppleDouble
+.LSOverride

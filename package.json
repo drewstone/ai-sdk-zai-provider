@@ -1,0 +1,63 @@
+{
+  "name": "ai-sdk-zai-cc-provider",
+  "version": "0.1.0",
+  "description": "Drop-in Z.AI/GLM provider for the Vercel AI SDK powered by ai-sdk-provider-claude-code with automatic env + MCP wiring.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "clean": "rm -rf dist",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:integration": "vitest run test/integration",
+    "log:stream": "node ./scripts/stream-log.mjs"
+  },
+  "keywords": [
+    "ai-sdk",
+    "zai",
+    "glm",
+    "claude-code",
+    "provider"
+  ],
+  "author": "Z.AI Engineering <support@z.ai>",
+  "homepage": "https://github.com/zai-dev/ai-sdk-zai-cc-provider#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zai-dev/ai-sdk-zai-cc-provider.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zai-dev/ai-sdk-zai-cc-provider/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^1.1.4",
+    "ai": "^5.0.107",
+    "ai-sdk-provider-claude-code": "^2.2.4",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "dotenv": "^17.2.3",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.15"
+  }
+}
