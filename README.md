@@ -1,15 +1,15 @@
 ## ai-sdk-zai-provider
 
 [![npm version](https://img.shields.io/npm/v/ai-sdk-zai-provider.svg)](https://www.npmjs.com/package/ai-sdk-zai-provider)
-> Verify the published build anytime with `npm info ai-sdk-zai-provider@0.1.1`
+> Check the published build with `npm info ai-sdk-zai-provider@0.1.1`
 
-Expert-friendly [Vercel AI SDK](https://sdk.vercel.ai/) provider for [Z.AI / GLM](https://docs.z.ai/devpack/tool/claude). It reuses the hardened [`ai-sdk-provider-claude-code`](https://github.com/ben-vargas/ai-sdk-provider-claude-code) transport, patches the Anthropic env vars that Z.AI expects, and wires the documented MCP servers automatically.
+[Vercel AI SDK](https://sdk.vercel.ai/) provider that talks to [Z.AI / GLM](https://docs.z.ai/devpack/tool/claude). It reuses [`ai-sdk-provider-claude-code`](https://github.com/ben-vargas/ai-sdk-provider-claude-code), rewrites the Anthropic env vars for Z.AI, and wires the published MCP servers.
 
 ### Capabilities
-- **Claude Code CLI** (`zaiClaudeCode` / `createZaiClaudeCode`): drop-in CLI parity with web-search, reader/WebFetch, and vision MCP servers enabled, including guardrails for custom tools.
-- **Anthropic HTTP** (`zaiAnthropic` / `createZaiAnthropic`): deterministic HTTP surface for custom tools, hosted agents, and CI harnesses.
-- **Force-only custom tools**: `forceCustomTools` helper simulates the assistant tool-call flow so the CLI only sees your tool.
-- **Typed options**: env merging, model remaps, MCP/vision process control, and permission defaults are all surfaced via TypeScript.
+- **Claude Code CLI** (`zaiClaudeCode` / `createZaiClaudeCode`): same CLI tools plus Z.AI web-search, reader/WebFetch, and vision servers. Optional guardrails strip Bash/Task when needed.
+- **HTTP** (`zaiAnthropic` / `createZaiAnthropic`): Anthropic-compatible endpoint that remaps GLM ids and keeps custom tools deterministic.
+- **Custom tool helper** (`forceCustomTools`): run your tool manually, inject the `tool-call`/`tool-result`, and hand context back to the CLI without letting it call Bash.
+- **Typed configuration**: env merges, MCP settings, model remaps, timeouts, and permission defaults are exposed as options.
 
 ### Install
 
