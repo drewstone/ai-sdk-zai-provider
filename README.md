@@ -1,5 +1,8 @@
 ## ai-sdk-zai-provider
 
+[![npm version](https://img.shields.io/npm/v/ai-sdk-zai-provider.svg)](https://www.npmjs.com/package/ai-sdk-zai-provider)
+> Verify the published build anytime with `npm info ai-sdk-zai-provider@0.1.1`
+
 Expert-friendly [Vercel AI SDK](https://sdk.vercel.ai/) provider for [Z.AI / GLM](https://docs.z.ai/devpack/tool/claude). It reuses the hardened [`ai-sdk-provider-claude-code`](https://github.com/ben-vargas/ai-sdk-provider-claude-code) transport, patches the Anthropic env vars that Z.AI expects, and wires the documented MCP servers automatically.
 
 ### Capabilities
