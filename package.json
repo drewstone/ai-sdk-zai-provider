@@ -1,6 +1,6 @@
 {
   "name": "ai-sdk-zai-provider",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Drop-in Z.AI/GLM provider for the Vercel AI SDK powered by ai-sdk-provider-claude-code with automatic env + MCP wiring.",
   "type": "module",
   "main": "./dist/index.cjs",

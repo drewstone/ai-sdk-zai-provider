@@ -16,7 +16,7 @@ const DEFAULT_TIMEOUT_MS = 300_000;
 const DEFAULT_CUSTOM_TOOLS_SYSTEM_PROMPT =
   'You are running inside the Claude Code CLI with only custom developer-provided tools available. NEVER call Bash, Task, Shell, or any CLI tool; those calls will fail. Only use the explicitly provided tools and wait for a user tool_result before responding.';
 const DEFAULT_CUSTOM_TOOLS_DISALLOWED = ['Bash(*)', 'Task(*)'];
-const DEFAULT_HTTP_COMPAT_MODEL = 'claude-3-5-sonnet-20241022';
+const DEFAULT_HTTP_COMPAT_MODEL = 'claude-4.5-sonnet-20241022';
 const GLM_HTTP_PATTERN = /^glm-/i;
 
 const DEFAULT_MODEL_MAPPINGS: Record<ClaudeModelAlias, string> = {
@@ -469,6 +469,7 @@ export function createZaiAnthropic(options: CreateZaiAnthropicOptions = {}): (mo
 
   const glmFallbackModel =
     options.glmFallbackModel ??
+    process.env.ZAI_HTTP_FALLBACK_MODEL ??
     process.env.ZAI_HTTP_MODEL ??
     DEFAULT_HTTP_COMPAT_MODEL;
 

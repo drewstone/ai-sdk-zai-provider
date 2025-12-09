@@ -34,7 +34,7 @@ import { streamText } from 'ai';
 import { zaiAnthropic } from 'ai-sdk-zai-provider';
 
 const result = streamText({
-  model: zaiAnthropic(process.env.ZAI_HTTP_MODEL ?? 'claude-3-5-sonnet-20241022'),
+  model: zaiAnthropic('glm-4.6'),
   tools: { /* Anthropic-style tool map */ },
   messages: [
     { role: 'system', content: 'You are a helpful assistant.' },
@@ -42,7 +42,7 @@ const result = streamText({
   ],
 });
 ```
-> Z.AI’s HTTP proxy currently routes Claude-compatible ids. Override `ZAI_HTTP_MODEL` or pass `glmFallbackModel`/`false` to `createZaiAnthropic` when the v2 GLM HTTP endpoint lands.
+> Pass GLM SKUs (`glm-4.6`, `glm-4.5-air`, etc.). The provider rewrites them to the Claude-compatible fallback id until Z.AI exposes the spec v2 HTTP surface. Override via `glmFallbackModel`, `ZAI_HTTP_FALLBACK_MODEL`, or set it to `false` once Z.AI supports GLM IDs natively.
 
 ### createZaiClaudeCode overview
 ```ts
@@ -78,7 +78,7 @@ Every model inherits:
 npm test                 # unit + mocked integration suites (requires ZAI_API_KEY)
 npm run test:integration # focus on the integration spec
 ```
-Coverage includes env merging, MCP wiring, deterministic custom tools via HTTP, and stream-shape validation. All integration specs run against local fixtures—no flaky external dependencies.
+Coverage includes env merging, MCP wiring, deterministic custom tools via HTTP, and stream-shape validation. Set `ZAI_API_KEY` (and optionally `ZAI_HTTP_FALLBACK_MODEL` if you need a different Claude-compatible fallback). All integration specs run against local fixtures—no flaky external dependencies.
 
 ### Custom tools
 
@@ -97,7 +97,7 @@ const tools = {
 };
 
 const result = streamText({
-  model: zaiAnthropic(process.env.ZAI_HTTP_MODEL ?? 'claude-3-5-sonnet-20241022'),
+  model: zaiAnthropic('glm-4.6'),
   tools,
   messages: [{ role: 'system', content: 'Use repo_search exactly once before answering.' }],
 });
@@ -131,4 +131,4 @@ await forceCustomTools({
 `forceCustomTools` runs your tool once, injects the `tool-call`/`tool-result`, and hands control back to the CLI model with Bash/Task disabled.
 
 ### License
-MIT © 2024
+MIT © 2025

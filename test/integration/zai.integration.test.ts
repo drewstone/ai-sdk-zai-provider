@@ -8,7 +8,7 @@ import { createZaiClaudeCode, zaiClaudeCode, createZaiAnthropic } from '../../sr
 
 const TEST_TIMEOUT = 10_000;
 const VISION_TEST_IMAGE = readFileSync(new URL('../assets/vision-test.jpg', import.meta.url));
-const ANTHROPIC_HTTP_MODEL = process.env.ZAI_HTTP_MODEL ?? 'claude-3-5-sonnet-20241022';
+const ANTHROPIC_HTTP_MODEL = process.env.ZAI_HTTP_MODEL ?? 'glm-4.6';
 
 interface StreamScenario {
   parts: Array<Record<string, unknown>>;

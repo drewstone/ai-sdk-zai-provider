@@ -34,7 +34,7 @@ const tools = {
   },
 };
 
-const httpModelId = process.env.ZAI_HTTP_MODEL ?? 'claude-3-5-sonnet-20241022';
+const httpModelId = process.env.ZAI_HTTP_MODEL ?? 'glm-4.6';
 
 const result = streamText({
   model: zaiAnthropic(httpModelId),

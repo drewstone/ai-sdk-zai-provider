@@ -216,10 +216,25 @@ describe('createZaiAnthropic', () => {
   it('remaps GLM SKUs to a Claude-compatible fallback by default', () => {
     const provider = createZaiAnthropic({
       apiKey: 'unit-key',
-      glmFallbackModel: 'claude-3-5-sonnet-20241022',
+      glmFallbackModel: 'claude-4.5-sonnet-20241022',
     });
     const model = provider('glm-4.6');
-    expect(model.modelId).toBe('claude-3-5-sonnet-20241022');
+    expect(model.modelId).toBe('claude-4.5-sonnet-20241022');
+  });
+
+  it('reads the fallback id from ZAI_HTTP_FALLBACK_MODEL when set', () => {
+    const original = process.env.ZAI_HTTP_FALLBACK_MODEL;
+    process.env.ZAI_HTTP_FALLBACK_MODEL = 'claude-4.5-sonnet-20241022';
+    const provider = createZaiAnthropic({
+      apiKey: 'unit-key',
+    });
+    const model = provider('glm-4.6');
+    expect(model.modelId).toBe('claude-4.5-sonnet-20241022');
+    if (original) {
+      process.env.ZAI_HTTP_FALLBACK_MODEL = original;
+    } else {
+      delete process.env.ZAI_HTTP_FALLBACK_MODEL;
+    }
   });
 
   it('throws when GLM SKUs are requested without a fallback', () => {
